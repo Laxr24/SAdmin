@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Advanced Tagging Input Examples</title>
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/flatly/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script type="text/javascript" src="jquery.tag.js"></script>
+<link rel="stylesheet" href="jquery.tag.css" type="text/css">
+<style>
+	body { background-color: #fafafa; }
+	.container { margin: 150px auto; }
+.aCenter{text-align:center;}
+.clearfix:after {visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
+* html .clearfix{ zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+.left{float:left;}
+
+.example{padding: 10px;}
+.htm {color: blue;padding: 10px;border: solid 1px green;}
+.js{color: green;padding: 10px;border: solid 1px blue;}
+.real{padding: 10px;border: solid 1px black;}
+.options table{border: dotted 1px;width: 100%;}
+.options table th,.options table td{border: dotted 1px;text-align:left;}
+.options table .parameter, .options table .type, .options table .default {width: 7em;}
+</style>
+<script type="text/javascript">
+var tag6;
+$(document).ready(function(){
+	$("#testtag1").tagsInit();
+	$("#testtag2").tagsInit({
+		inputNote:"Type Something",
+		del:false,
+		beforeInput:function(tagValue){
+			if(tagValue=='aaa'){
+				alert("aaa is not allowed");
+				return false;
+			}
+		}
+	});
+	$("#testtag3").tagsInit({
+		repeat:'The ',
+		action:{href:'https://www.google.com/search?q=%v%',target:'_blank'}
+	});
+	$("#testtag4").tagsInit({
+		onDel:function(){alert("Can Not Be Deleted");return false;},
+		action:function(tagValue){alert(tagValue);},
+		theme:'black'
+	});
+	tag6=$("#testtag6").tagsInit();
+});
+function mytagsAdd(){
+		tag6.tagsAdd(prompt("Tag Value"));
+}
+function mytagsDel(){
+	tag6.tagsDel(prompt("Tag Value"));
+}
+function mytagsClear(){
+	tag6.tagsClear();
+}
+function mytagsCount(){
+	alert(tag6.tagsCount());
+}
+function mytagsIndexof(){
+	alert(tag6.tagsIndexof(prompt("Tag Value")));
+}
+function mytagsStr(){
+	alert(tag6.tagsStr());
+}
+function mytagsJson(){
+	alert(tag6.tagsJson());
+}
+</script>
+</head>
+<body><div id="jquery-script-menu">
+<div class="jquery-script-center">
+<ul>
+<li><a href="https://www.jqueryscript.net/form/advanced-tagging-input.html">Download This Plugin</a></li>
+<li><a href="https://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
+</ul><div id="carbon-block"></div>
+<div class="jquery-script-ads"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<div class="jquery-script-clear"></div>
+</div>
+</div>
+	<div class="container">
+	<h1 class="aCenter">Advanced Tagging Input Examples</h1>
+	<p class="lead">Tags.js is an advanced, feature-rich tagging system used to manage (add, remove, validate) tags & tokens with an input field.</p>
+	<div class="examples">
+		<div class="example">
+			<h4>1. Basic Usage</h4>
+			<h5>html:</h5>
+			<div class="htm">
+				&lt;div id="testtag1" tagname="test1"&gt;&lt;/div&gt;
+			</div>
+			<h5>js:</h5>
+			<div class="js">
+<pre>$(document).ready(function(){
+	$("#testtag1").tagsInit();
+});</pre>
+			</div>
+			<h5>Result</h5>
+			<div class="real">
+				<div id="testtag1" tagname="test1"></div>
+			</div>
+		</div>
+		<h3>Before Input Callback</h3>
+		<div class="example">
+			<h5>html:</h5>
+			<div class="htm">
+				&lt;div id="testtag2" tagname="test2"&gt;&lt;/div&gt;
+			</div>
+			<h5>js:</h5>
+			<div class="js">
+<pre>$(document).ready(function(){
+	$("#testtag2").tagsInit({
+		inputNote:"Type Something Here",
+		del:false,
+		beforeInput:function(tagValue){
+			if(tagValue=='aaa'){
+				alert("aaa is not allowed");
+				return false;
+			}
+		}
+	});
+});</pre>
+			</div>
+			<h5>Result:</h5>
+			<div class="real">
+				<div id="testtag2" tagname="test2"></div>
+			</div>
+		</div>
+		<h3>Custom Click Action</h3>
+		<div class="example">
+			<h5>html:</h5>
+			<div class="htm">
+				&lt;div id="testtag3" tagname="test3"&gt;&lt;/div&gt;
+				&lt;div id="testtag4" tagname="test4"&gt;&lt;/div&gt;
+			</div>
+			<h5>js:</h5>
+			<div class="js">
+<pre>$(document).ready(function(){
+	$("#testtag3").tagsInit({
+		repeat:'Duplicate Tag',
+		action:{href:'https://www.google.com/search?q=%v%',target:'_blank'}
+	});
+	$("#testtag4").tagsInit({
+		onDel:function(){alert("Can NOT be deleted");return false;},
+		action:function(tagValue){alert(tagValue);},
+		theme:'black'
+	});
+});</pre>
+			</div>
+			<h5>Result</h5>
+			<div class="real">
+				<div id="testtag3" tagname="test3"></div>
+				<div id="testtag4" tagname="test4"></div>
+			</div>
+		</div>
+		<h3>API Methods</h3>
+		<div class="example">
+			<h5>html</h5>
+			<div class="htm">
+<pre>
+&lt;div&gt;
+	&lt;input type="button" onclick="mytagsAdd()" value="tagsAdd"/&gt;
+	&lt;input type="button" onclick="mytagsDel()" value="tagsDel"/&gt;
+	&lt;input type="button" onclick="mytagsClear()" value="tagsClear"/&gt;
+	&lt;input type="button" onclick="mytagsCount()" value="tagsCount"/&gt;
+	&lt;input type="button" onclick="mytagsIndexof()" value="tagsIndexof"/&gt;
+	&lt;input type="button" onclick="mytagsStr()" value="tagsStr"/&gt;
+	&lt;input type="button" onclick="mytagsJson()" value="tagsJson"/&gt;
+&lt;/div&gt;
+&lt;div id="testtag6" tagname="test6"&gt;&lt;/div&gt;
+</pre>
+			</div>
+			<h5>js</h5>
+			<div class="js">
+<pre>
+var tag6=$("#testtag6").tagsInit();
+function mytagsAdd(){
+	tag6.tagsAdd(prompt("Tag Value"));
+}
+function mytagsDel(){
+	tag6.tagsDel(prompt("Tag Value"));
+}
+function mytagsClear(){
+	tag6.tagsClear();
+}
+function mytagsCount(){
+	alert(tag6.tagsCount());
+}
+function mytagsIndexof(){
+	alert(tag6.tagsIndexof(prompt("Tag Value")));
+}
+function mytagsStr(){
+	alert(tag6.tagsStr());
+}
+function mytagsJson(){
+	alert(tag6.tagsJson());
+}
+</pre>
+			</div>
+			<h5>Result</h5>
+			<div class="real">
+				<div>
+					<input type="button" onclick="mytagsAdd()" value="tagsAdd"/>
+					<input type="button" onclick="mytagsDel()" value="tagsDel"/>
+					<input type="button" onclick="mytagsClear()" value="tagsClear"/>
+					<input type="button" onclick="mytagsCount()" value="tagsCount"/>
+					<input type="button" onclick="mytagsIndexof()" value="tagsIndexof"/>
+					<input type="button" onclick="mytagsStr()" value="tagsStr"/>
+					<input type="button" onclick="mytagsJson()" value="tagsJson"/>
+				</div>
+				<div id="testtag6" tagname="test6"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+try {
+  fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
+    return true;
+  }).catch(function(e) {
+    var carbonScript = document.createElement("script");
+    carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+    carbonScript.id = "_carbonads_js";
+    document.getElementById("carbon-block").appendChild(carbonScript);
+  });
+} catch (error) {
+  console.log(error);
+}
+</script><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

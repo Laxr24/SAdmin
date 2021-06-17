@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Dashboard</title>
+
+    <!-- CSS Imports -->
+    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="js/lightbox2-2.11.3/dist/css/lightbox.min.css">
+
+    <!-- Bootstrap for some frameworks SADMIN  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+
+
+    <!-- Framwwork JS imports -->
+    <script src="js/juqery/jquery/jquery.js"></script>
+    <script src="js/juqery/jquery-ui.js"></script>
+    <script src="js/ckeditor/ckeditor.js"></script>
+    <script src="js/advanced-tagging-input/jquery.tag.js"></script>
+    <script src="js/bootstrap-tagsinput.min.js"></script>
+    <script src="js/lightbox2-2.11.3/dist/js/lightbox.min.js" defer></script>
+
+    <!-- include FilePond library -->
+    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+
+    <!-- include FilePond plugins -->
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
+
+    <!-- include FilePond jQuery adapter -->
+    <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+
+
+</head>
+
+<body>
+
+
+    <div class="bodyWrapper" id="tab">
+        <!-- left side -->
+        <section>
+            <div class="left_navigation section">
+
+
+                <ul>
+                    <li>
+                        <div class="profileImage"></div>
+                    </li>
+                    <li>
+                        <p>John Doe</p>
+                    </li>
+                    <li><a href="#tab-1"><span><i class="fa fa-tachometer" aria-hidden="true"></i></span>Dashboard</a>
+                    </li>
+                    <li><a href="#tab-2"><span><i class="fa fa-book" aria-hidden="true"></i>
+                            </span>Posts</a></li>
+                    <li><a href="#tab-3"><span><i class="fa fa-file-word-o" aria-hidden="true"></i>
+                            </span>Media</a></li>
+                    <li><a href="#tab-4"><span><i class="fa fa-list" aria-hidden="true"></i>
+                            </span>Categories</a></li>
+                    <li><a href="#tab-7"><span><i class="fa fa-list" aria-hidden="true"></i>
+                            </span>Menu</a></li>
+                    <li><a href="#tab-5"><span><i class="fa fa-cogs" aria-hidden="true"></i>
+                            </span>Settings</a></li>
+                    <li><a href="#tab-6"><span><i class="fa fa-user" aria-hidden="true"></i>
+                            </span>Profile Settings</a></li>
+                    <li><a href="logout.html"><span><i class="fa fa-power-off" aria-hidden="true"></i>
+                            </span>Logout</a></li>
+
+                </ul>
+
+            </div>
+        </section>
+        <!-- End de left side -->
+        <!-- right side -->
+        <section>
+            <div class="right_navigation section">
+
+                <div id="tab-1">
+                    <div class="">
+                        <div class="">
+                            <a href="#" class="btn btn-primary">Manage posts</a>
+                            <a href="#" class="btn btn-warning">+ Add new post</a>
+                        </div>
+                        <div class="">
+                            <a href="#" class="btn btn-danger">Profile Management</a>
+                            <a href="#" class="btn btn-success">Website settings</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-2">
+                    <div class="post_container" id="postsTab">
+                        <h1>Posts</h1>
+
+                        <div class="manageTabs">
+                            <ul>
+                                <li><a href="#postsTab-1">Create Post</a></li>
+                                <li><a href="#postsTab-2">Manage Post</a></li>
+                                <li><a href="#postsTab-3">SEO management</a></li>
+                            </ul>
+
+                            <!-- Posts TABS for managig contents -->
+                            <div id="postsTab-1">
+                                <h3>Create post</h3>
+                                <!-- impliment CK Editor -->
+                                <textarea name="editor1"
+                                    id="editor1">&lt;p&gt;Enter your text here and be creative&lt;/p&gt;</textarea>
+
+                                <Button onclick="showCOntent()">Print</Button>
+                            </div>
+                            <div id="postsTab-2">
+                                <h3>All Posts</h3>
+
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <td>Title</td>
+                                            <td>Author</td>
+                                            <td>Status</td>
+                                            <td>Category</td>
+                                            <td colspan="2">Manage</td>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>Demo title</td>
+                                            <td>Admin</td>
+                                            <td>Draft</td>
+                                            <td>Fashion,food</td>
+                                            <td><a href="#">Edit</a></td>
+                                            <td><a href="#">Delete</a></td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                            <div id="postsTab-3">
+                                <h3>Input Your tags</h3>
+                                <button class="btn btn-success" onclick="showTags()">Show in console</button>
+                                <input type="text" placeholder="Insert tags" id="inputtag" size="" value=""
+                                    data-role="tagsinput">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-3">
+
+                    <div class="mediaTabContainer">
+                        <h1>Media</h1>
+                        <!-- Manage tabs  -->
+                        <div class="manageTabs" id="mediaTabs">
+                            <ul>
+                                <li><a href="#media-1">All Media</a></li>
+                                <li><a href="#media-2">Upload new</a></li>
+                            </ul>
+
+
+                            <!-- All medeia  -->
+                            <div id="media-1">
+
+                                <div>
+                                    <h3>Manage Your media contents</h3>
+                                    <input type="text" name="mediaSearch" id="" autocomplete="off"
+                                        placeholder=" Search your content">
+                                </div>
+
+                                <div class="gallery">
+                                    <!-- Single Image Item SAdmin  -->
+                                    <div class="gallery-item" style="background-image: url('media/profileImage.jpg');">
+                                        <!-- overlay -->
+                                        <div class="overlay">
+                                            <div class="action_row">
+                                                <a href="/media/profileImage.jpg" class="copyImageLink"><span><i
+                                                            class="fa fa-link" aria-hidden="true"></i>
+                                                    </span></a>
+                                                <a href="/media/profileImage.jpg" data-title="Image Title"
+                                                    data-lightbox="Admin Gallery Image"><span><i class="fa fa-eye"
+                                                            aria-hidden="true"></i>
+
+                                                    </span></a>
+                                                <a href="#"><span><i class="fa fa-trash" aria-hidden="true"></i>
+
+                                                    </span></a>
+                                            </div>
+                                        </div>
+                                        <!-- End overlay -->
+                                    </div>
+                                    <!-- End de Single Image Item SAdmin  -->
+
+                                </div>
+                            </div>
+                            <!-- End de All medeia  -->
+                            <div id="media-2">
+                                <h3>Upload media file</h3>
+                                <form>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1"
+                                            placeholder=" file name...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Password</label>
+                                        <input type="caption" class="form-control" id="exampleInputPassword1"
+                                            placeholder=" image caption...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">File input</label>
+                                        <input type="file" id="exampleInputFile">
+                                        <p class="help-block">Fill out your filename so that you can find it later.</p>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </form>
+
+                            </div>
+
+                        </div>
+                        <!-- End de Manage tabs  -->
+                    </div>
+
+
+
+                </div>
+                <div id="tab-4">Tab 4</div>
+                <div id="tab-5">Tab 5</div>
+                <div id="tab-6">Tab 6</div>
+                <div id="tab-7">
+                    <div class="inner_content_container" id="menuTabs">                      
+                           <h1>Site Menu</h1>
+                            <div class="manageTabs">
+                                <ul>
+                                    <li><a href="#menuTabs-1">Edit Header Menu</a></li>
+                                    <li><a href="#menuTabs-2">Social menu</a></li>
+                                    <li><a href="#menuTabs-3">Footer Menu</a></li>
+                                </ul>
+    
+                                <div id="menuTabs-1">
+                                    <Button class="btn btn-primary" onclick="show()">Save</Button>
+                                    <ul class="mainMenu" id="sortable">
+                                        
+                                        <li class="ui-state-default"><a href="#">Home</a></li>
+                                        <li class="ui-state-default"><a href="#">Contact</a></li>
+                                        <li class="ui-state-default"><a href="#">About</a></li>
+                                    </ul>
+                                </div>
+                                <div id="menuTabs-2">2</div>
+                                <div id="menuTabs-3">3</div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End de right side -->
+    </div>
+
+    <!-- Custom Js Import -->
+    <script src="js/app.js"></script>
+</body>
+
+</html>

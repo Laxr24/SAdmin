@@ -1,0 +1,14 @@
+{
+  "name": "sadmin",
+  "version": "1.1.0",
+  "description": "This is the web admin interface. Built with free opensource frameworks and custom features. Author is k.M. Shaan",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "K.M. Shaan",
+  "license": "ISC",
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-balloon": "^27.0.0"
+  }
+}
